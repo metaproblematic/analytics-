@@ -1,18 +1,18 @@
 
 
 $(document).ready(function() {
-console.time('analyze');
+console.time('analyze')
 	
-	var totalScrolled = 0;
+	var totalScrolled = 0
 	function amountScrolled() {
-		var winheight = $(window).height();
-		var docheight = $(document).height();
-		var scrollPos = $(window).scrollTop();
+		var winheight = $(window).height()
+		var docheight = $(document).height()
+		var scrollPos = $(window).scrollTop()
 		var trackLength = docheight - winheight
-		var	pctScrolled = Math.floor(scrollPos/trackLength * 100);
+		var	pctScrolled = Math.floor(scrollPos/trackLength * 100)
 		// console.log(pctScrolled + '% scrolled')
 		if (pctScrolled > totalScrolled) {
-			totalScrolled = pctScrolled;
+			totalScrolled = pctScrolled
 		}
 
 	}
@@ -33,7 +33,7 @@ console.time('analyze');
 	})
 
 	// console.timeEnd('analyze');
-	var aTagHoverTime;
+	var aTagHoverTime
 	$('body>a').mouseover(function(event) {
 		aTagHoverTime = new Date.now()
 	})
@@ -42,34 +42,34 @@ console.time('analyze');
 		aTagHoverTime = new Date.now() - aTagHoverTime
 	})
 	$('body>label').mouseover(function(event) {
-		aTagHoverTime = new Date.now()
+		labelTagHoverTime = new Date.now()
 	})
 
 	$('body>label').mouseleave(function(event) {
-		aTagHoverTime = new Date.now() - aTagHoverTime
+		labelTagHoverTime = new Date.now() - aTagHoverTime
 	})
 
 	$('body>p').mouseover(function(event) {
-		aTagHoverTime = new Date.now()
+		pTagHoverTime = new Date.now()
 	})
 
 	$('body>p').mouseleave(function(event) {
-		aTagHoverTime = new Date.now() - aTagHoverTime
+		pTagHoverTime = new Date.now() - aTagHoverTime
 	})
 
 	$('body>textarea').mouseover(function(event) {
-		aTagHoverTime = new Date.now()
+		textTagHoverTime = new Date.now()
 	})
 
 	$('body>textarea').mouseleave(function(event) {
-		aTagHoverTime = new Date.now() - aTagHoverTime
+		textTagHoverTime = new Date.now() - aTagHoverTime
 	})
 	$('body>img').mouseover(function(event) {
-		aTagHoverTime = new Date.now()
+		imgTagHoverTime = new Date.now()
 	})
 
 	$('body>img').mouseleave(function(event) {
-		aTagHoverTime = new Date.now() - aTagHoverTime
+		imgTagHoverTime = new Date.now() - aTagHoverTime
 	})
 	$('a').on('click', function(event) {
 		console.log(event.target.attributes[0].nodeValue);
@@ -78,29 +78,7 @@ console.time('analyze');
 	$(window).on('unload', function(event) {
 		console.log('totalScrolled: ', totalScrolled)
 		console.log('count: ', count)
-		console.log('timeHovered: ', aTagHoverTime)
+		console.log('timeHovered: ', 'a-tag: ' aTagHoverTime, 'label-tag: 'labelTagHoverTime, 'p-tag: ', pTagHoverTime, 'text-tag: ', textTagHoverTime, 'img-tag: ', imgTagHoverTime)
 	})
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
